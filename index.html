@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- Good catch! -->
   <head>
     <meta charset="utf-8">
 
@@ -15,24 +15,27 @@
   </head>
 
   <body>
-    <header>Welcome to our wildlife website</header>
+    <header>Welcome to our wildlife website
 
-    <nav>
       <div class="nav">
-        <ul class="nav">
-          <li><a tabindex="0" href="#">Home</a></li>
-          <li><a href="#">Our team</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
+        <nav>
+          <ul class="nav">
+            <li><a tabindex="0" href="#">Home</a></li>
+            <li><a href="#">Our team</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
+        <!-- Surround your link lists with a <nav> element to show that they are a navigation list -->
 
         <form class="search">
-          <label for="search">Search</label>
-          <input type="search" id="search" name="q" placeholder="Search query">
+          <input type="search" id="search" name="q" placeholder="Search query" aria-label="search">
           <input type="submit" value="Go!">
         </form>
+        <!-- It's optional, but you can remove this label and instead use an aria-label on the input to allow for accessibility -->
       </div>
-    </nav>
+    </header>
+    <!-- Best to completely surround all of the header elements with the <header> tag, so it's obvious that the nav and search are included -->
 
     <main>
       <article>
@@ -61,20 +64,22 @@
           Bears can also be classified in terms of their habitat — both large and medium bears are just as at home in urban areas as they are in the countryside. Different habitats encourange different behaviour however, as you'll find out below. The below table also gives you some useful facts about bears.
         </p>
 
-        <table tabindex="1">
+        <table tabindex="1" summary="Types of Bear"> <!-- This tabindex is unnecessary, unless you wanted users to tab to the table? -->
+          <caption>Types of Bear</caption> <!-- Always try to include a caption or summary="" attribute to the table to inform screen readers what the table is about -->
           <thead>
             <tr>
-              <td>Bear Type</td>
-              <td>Coat</td>
-              <td>Adult size</td>
-              <td>Habitat</td>
-              <td>Lifespan</td>
-              <td>Diet</td>
+              <th scope="col">Bear Type</th>
+              <th scope="col">Coat</th>
+              <th scope="col">Adult size</th>
+              <th scope="col">Habitat</th>
+              <th scope="col">Lifespan</th>
+              <th scope="col">Diet</th>
+              <!-- <th> is the element for "Table Heading", we also add a scope to the table to allow for screenreaders to parse the information better -->
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Wild</td>
+              <th scope="row">Wild</th> <!-- this is a table heading for the row, so we want to make sure to use the <th> element, and scope it to "row" -->
               <td>Brown or black</td>
               <td>1.4 to 2.8 meters</td>
               <td>Woods and forests</td>
@@ -82,7 +87,7 @@
               <td>Fish, meat, plants</td>
             </tr>
             <tr>
-              <td>Urban</td>
+              <th scope="row">Urban</th> <!-- this is a table heading for the row, so we want to make sure to use the <th> element, and scope it to "row" -->
               <td>North Face</td>
               <td>18 to 22</td>
               <td>Condos and coffee shops</td>
@@ -123,8 +128,9 @@
         <audio controls tabindex="0">
           <source src="media/bear.mp3" type="audio/mp3">
           <source src="media/bear.ogg" type="audio/ogg">
+          <p>It looks like your browser doesn't support HTML5 audio players. You can listen to it by clicking this link, <a href="media/bear.ogg">audio file</a></p> <!-- you actually do want this inside of the <audio> element. The browser will go through each <source> until it finds one it can use, and if it can't it'll default to whatever is at the end of the list. Putting it outside of the <audio> will show it to EVERYONE, which we won't want. Great job adding the link though (even if it is already one of the sources, I won't tell anyone)! -->
         </audio>
-        <p>It looks like your browser doesn't support HTML5 audio players. You can listen to it by clicking this link, <a href="media/bear.ogg">audio file</a></p>
+
 
         <h2>Transcription</h2>
         <p>This isn't really an audio fact file about bears, but it is an audio file that you can transcribe.</p>
@@ -153,16 +159,17 @@
               <form class="comment-form">
                 <div class="flex-pair">
                   <label for="name">Your name:</label>
-                  <input type="text" name="name" id="name" placeholder="Enter your name">
+                  <input type="text" name="name" id="name" placeholder="Enter your name" required>
                 </div>
                 <div class="flex-pair">
                   <label for="comment">Your comment:</label>
-                  <input type="text" name="comment" id="comment" placeholder="Enter your comment">
+                  <input type="text" name="comment" id="comment" placeholder="Enter your comment" required>
                 </div>
                 <div>
                   <input type="submit" value="Submit comment">
                 </div>
               </form>
+              <!-- Adding "required" to an input is called client-side form validation, and it's a way for users to tell before the form is submitted whether it will succeed or not -->
 
               <h2>Comments</h2>
 
@@ -181,7 +188,7 @@
               </ul>
 
             </div>
-          </div>
+          <!-- </div> // Extra div closing -->
         </section>
       
       </article>
@@ -190,13 +197,16 @@
 
         <h2>Related</h2>
 
-        <ul>
-          <li><a href="#">The trouble with Bees</a></li>
-          <li><a href="#">The trouble with Otters</a></li>
-          <li><a href="#">The trouble with Penguins</a></li>
-          <li><a href="#">The trouble with Octopi</a></li>
-          <li><a href="#">The trouble with Lemurs</a></li>
-        </ul>
+        <nav>
+          <ul>
+            <li><a href="#">The trouble with Bees</a></li>
+            <li><a href="#">The trouble with Otters</a></li>
+            <li><a href="#">The trouble with Penguins</a></li>
+            <li><a href="#">The trouble with Octopi</a></li>
+            <li><a href="#">The trouble with Lemurs</a></li>
+          </ul>
+        </nav>
+        <!-- Linklist we want to wrap with a <nav> -->
 
       </div>
     </main>
